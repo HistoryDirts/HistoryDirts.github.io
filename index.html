@@ -46,7 +46,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"historydirts.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":80,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"historydirts.github.io","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":200,"cursorChar":"__","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -190,20 +190,20 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/10/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" target="_self">
-          我的第一篇博客
+        <a href="/2021/11/03/java%E4%B8%8Emysql%E6%97%B6%E9%97%B4%E6%88%B3%E4%BA%A4%E4%BA%92/" target="_self">
+          java 与 mysql 时间戳数据交互
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/10/24/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" target="_self">
+        <a href="/2021/11/03/java%E4%B8%8Emysql%E6%97%B6%E9%97%B4%E6%88%B3%E4%BA%A4%E4%BA%92/" target="_self">
           
           
             
           
-          第一章内容
-第二章内容
-结束
+          一、java 接收 myqsl 数据库时间戳类型数据java.util.Date 类只精确到年月日，可以使用 java.sql.Timestamp 类接收时间戳类型数据（精确到秒），但如果不做其它处理，最终得到的数据会像这样：2021-03-23T02:30:00.000+0000。可以使用@JsonFormat 注解解决此问题。
+首先添加对应插件包：
+1234567891011121314151
         </a>
       </p>
 
@@ -211,8 +211,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-10-24 16:05" pubdate>
-              2021-10-24
+            <time datetime="2021-11-03 21:30" pubdate>
+              2021-11-03
             </time>
           </div>
         
@@ -221,7 +221,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%9D%82%E8%B0%88/">杂谈</a>
+              <a href="/tags/java-mysql-%E8%B8%A9%E5%9D%91/">java mysql 踩坑</a>
             
           </div>
         
