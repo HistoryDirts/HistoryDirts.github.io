@@ -4,6 +4,27 @@
   
   
   <entry>
+    <title>taro 中使用 axios 导致路由失效</title>
+    <link href="/2021/12/20/taro%E4%B8%AD%E4%BD%BF%E7%94%A8axios%E4%BA%A7%E7%94%9Fbug/"/>
+    <url>/2021/12/20/taro%E4%B8%AD%E4%BD%BF%E7%94%A8axios%E4%BA%A7%E7%94%9Fbug/</url>
+    
+    <content type="html"><![CDATA[<ol><li><p>开发环境：</p><p>taro 3.3.8   </p><p>vue 3.2.26 </p><p>axios 0.21.4</p><p>node 14.17.6</p></li><li><p>场景复现：</p><p>request.js</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><br><span class="hljs-keyword">const</span> request = axios.create(&#123;<br>    <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&quot;/api&quot;</span>,<br>    <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span><br>&#125;)<br></code></pre></td></tr></table></figure><p>login.vue</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../utils/request.js&quot;</span><br><br>request.post(<span class="hljs-string">&quot;/user/login&quot;</span>, postdata).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br><span class="hljs-keyword">if</span> (res.code === <span class="hljs-number">200</span>) &#123;<br><span class="hljs-built_in">this</span>.$message(&#123;<br><span class="hljs-attr">type</span>: <span class="hljs-string">&quot;success&quot;</span>,<br><span class="hljs-attr">message</span>: <span class="hljs-string">&quot;登录成功!&quot;</span><br>&#125;)<br>Taro.navigateTo(&#123;<span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;/pages/home/home&#x27;</span>&#125;) <span class="hljs-comment">//登录成功之后进行页面的跳转，跳转到主页</span><br>     &#125; <span class="hljs-keyword">else</span> &#123;<br><span class="hljs-built_in">this</span>.$message(&#123;<br><span class="hljs-attr">type</span>: <span class="hljs-string">&quot;error&quot;</span>,<br><span class="hljs-attr">message</span>: <span class="hljs-string">&quot;登录失败！&quot;</span><br>&#125;)<br>&#125;<br>&#125;) <br></code></pre></td></tr></table></figure></li></ol><p>​       这种情况下，当发起 request 请求时，能够正常与后端进行数据交互，但是Taro.navigateTo({url:’/pages/home/home’}) 并不能生效，页面还会停留在原来的页面，也不会有任何报错。</p><ol start="3"><li><p>解决方案</p><p>使用 Taro.request() 发起请求， Taro 框架的此 api 不会产生上述 bug，可以成功进行页面间的路由。需要注意的是，使用 Taro 的此 api 时，从后端返回的响应数据是完整的 http 请求的相应体，同样需要自行处理。</p></li></ol>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>taro</tag>
+      
+      <tag>axios</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>java 与 mysql 时间戳数据交互</title>
     <link href="/2021/11/03/java%E4%B8%8Emysql%E6%97%B6%E9%97%B4%E6%88%B3%E4%BA%A4%E4%BA%92/"/>
     <url>/2021/11/03/java%E4%B8%8Emysql%E6%97%B6%E9%97%B4%E6%88%B3%E4%BA%A4%E4%BA%92/</url>
@@ -14,7 +35,9 @@
     
     <tags>
       
-      <tag>java mysql 踩坑</tag>
+      <tag>java</tag>
+      
+      <tag>mysql</tag>
       
     </tags>
     
