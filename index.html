@@ -248,11 +248,10 @@
           
             
           
-          1、使用 nginx 反向代理实现跨域https://www.cnblogs.com/bninp/p/5694277.html
-前端：在 http://localhost:8080 启动
+          1、使用 nginx 反向代理实现跨域前端：在 http://localhost:8080 启动
 后端：在 http://localhost:9090 启动
 在 nginx 中配置 前端部分 ：
-1234567891011121314server &#123;   listen       8080;   s
+1234567891011121314server &#123;   listen       8080;   server_name  localhost;   location / &#123;   
         </a>
       </p>
 
