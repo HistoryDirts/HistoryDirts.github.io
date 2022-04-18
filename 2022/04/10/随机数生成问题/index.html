@@ -16,21 +16,21 @@
   <meta name="description" content="">
   <meta name="author" content="Keeway Wu">
   <meta name="keywords" content="">
-  <meta name="description" content="开发环境： taro 3.3.8    vue 3.2.26  axios 0.21.4 node 14.17.6  场景复现： request.js 123456import axios from &amp;#x27;axios&amp;#x27;const request &#x3D; axios.create(&amp;#123;    baseURL: &quot;&#x2F;api&quot;,    timeout: 5000">
+  <meta name="description" content="C 语言中的 rand() 函数rand() 函数可以生成 [0, RAND_MAX] 范围内的随机整数，RAND_MAX 通常为 int 类型的最大值，C 规范要求它不能小于 32767。 如何得到 [ 1, n ] 的随机整数一个简单的实现如下： 123int n &#x3D; 6;			&#x2F;&#x2F;例如我想要 [1, 6] 的随机数srand(time(NULL));int random &#x3D; 1 + rand">
 <meta property="og:type" content="article">
-<meta property="og:title" content="taro 中使用 axios 导致路由失效">
-<meta property="og:url" content="http://historydirts.github.io/2021/12/20/taro%E4%B8%AD%E4%BD%BF%E7%94%A8axios%E4%BA%A7%E7%94%9Fbug/index.html">
+<meta property="og:title" content="随机数生成问题">
+<meta property="og:url" content="http://historydirts.github.io/2022/04/10/%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="MetalStone">
-<meta property="og:description" content="开发环境： taro 3.3.8    vue 3.2.26  axios 0.21.4 node 14.17.6  场景复现： request.js 123456import axios from &amp;#x27;axios&amp;#x27;const request &#x3D; axios.create(&amp;#123;    baseURL: &quot;&#x2F;api&quot;,    timeout: 5000">
+<meta property="og:description" content="C 语言中的 rand() 函数rand() 函数可以生成 [0, RAND_MAX] 范围内的随机整数，RAND_MAX 通常为 int 类型的最大值，C 规范要求它不能小于 32767。 如何得到 [ 1, n ] 的随机整数一个简单的实现如下： 123int n &#x3D; 6;			&#x2F;&#x2F;例如我想要 [1, 6] 的随机数srand(time(NULL));int random &#x3D; 1 + rand">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-12-20T14:20:00.000Z">
-<meta property="article:modified_time" content="2021-12-20T14:26:19.386Z">
+<meta property="article:published_time" content="2022-04-10T06:45:31.000Z">
+<meta property="article:modified_time" content="2022-04-18T06:46:14.697Z">
 <meta property="article:author" content="Keeway Wu">
-<meta property="article:tag" content="taro">
-<meta property="article:tag" content="axios">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>taro 中使用 axios 导致路由失效 - MetalStone</title>
+  <title>随机数生成问题 - MetalStone</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="taro 中使用 axios 导致路由失效">
+            <span class="h2" id="subtitle" title="随机数生成问题">
               
             </span>
 
@@ -186,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-20 22:20" pubdate>
-        2021年12月20日 晚上
+      <time datetime="2022-04-10 14:45" pubdate>
+        2022年4月10日 下午
       </time>
     </span>
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      829 字
+      1.7k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      5 分钟
     </span>
   
 
@@ -243,35 +243,33 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">taro 中使用 axios 导致路由失效</h1>
+            <h1 style="display: none">随机数生成问题</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年12月20日 晚上
+                  本文最后更新于：2022年4月18日 下午
                 
               </p>
             
             <div class="markdown-body">
-              <ol>
-<li><p>开发环境：</p>
-<p>taro 3.3.8   </p>
-<p>vue 3.2.26 </p>
-<p>axios 0.21.4</p>
-<p>node 14.17.6</p>
-</li>
-<li><p>场景复现：</p>
-<p>request.js</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> axios <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;axios&#x27;</span><br><br><span class="hljs-keyword">const</span> request = axios.create(&#123;<br>    <span class="hljs-attr">baseURL</span>: <span class="hljs-string">&quot;/api&quot;</span>,<br>    <span class="hljs-attr">timeout</span>: <span class="hljs-number">5000</span><br>&#125;)<br></code></pre></td></tr></table></figure>
+              <h2 id="C-语言中的-rand-函数"><a href="#C-语言中的-rand-函数" class="headerlink" title="C 语言中的 rand() 函数"></a>C 语言中的 rand() 函数</h2><p>rand() 函数可以生成 [0, RAND_MAX] 范围内的随机整数，RAND_MAX 通常为 int 类型的最大值，C 规范要求它不能小于 32767。</p>
+<h2 id="如何得到-1-n-的随机整数"><a href="#如何得到-1-n-的随机整数" class="headerlink" title="如何得到 [ 1, n ] 的随机整数"></a>如何得到 [ 1, n ] 的随机整数</h2><p>一个简单的实现如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> n = <span class="hljs-number">6</span>;			<span class="hljs-comment">//例如我想要 [1, 6] 的随机数</span><br>srand(time(<span class="hljs-literal">NULL</span>));<br><span class="hljs-keyword">int</span> random = <span class="hljs-number">1</span> + rand() % <span class="hljs-number">6</span>;<br></code></pre></td></tr></table></figure>
 
-<p>login.vue</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> request <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../utils/request.js&quot;</span><br><br>request.post(<span class="hljs-string">&quot;/user/login&quot;</span>, postdata).then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> &#123;<br>	<span class="hljs-keyword">if</span> (res.code === <span class="hljs-number">200</span>) &#123;<br>		<span class="hljs-built_in">this</span>.$message(&#123;<br>		<span class="hljs-attr">type</span>: <span class="hljs-string">&quot;success&quot;</span>,<br>		<span class="hljs-attr">message</span>: <span class="hljs-string">&quot;登录成功!&quot;</span><br>		&#125;)<br>		Taro.navigateTo(&#123;<span class="hljs-attr">url</span>:<span class="hljs-string">&#x27;/pages/home/home&#x27;</span>&#125;) <span class="hljs-comment">//登录成功之后进行页面的跳转，跳转到主页</span><br>     &#125; <span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-built_in">this</span>.$message(&#123;<br>		<span class="hljs-attr">type</span>: <span class="hljs-string">&quot;error&quot;</span>,<br>		<span class="hljs-attr">message</span>: <span class="hljs-string">&quot;登录失败！&quot;</span><br>		&#125;)<br>	&#125;<br>&#125;) <br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>​       这种情况下，当发起 request 请求时，能够正常与后端进行数据交互，但是Taro.navigateTo({url:’/pages/home/home’}) 并不能生效，页面还会停留在原来的页面，也不会有任何报错。</p>
-<ol start="3">
-<li><p>解决方案</p>
-<p>使用 Taro.request() 发起请求， Taro 框架的此 api 不会产生上述 bug，可以成功进行页面间的路由。需要注意的是，使用 Taro 的此 api 时，从后端返回的响应数据是完整的 http 请求的相应体，同样需要自行处理。</p>
-</li>
-</ol>
+<p>我们可以很自然地想到利用取模运算得到 [0, 5] 的随机数，然后将结果加1得到 [1, 6] 的随机数，这也是笔者在中文互联网上搜索得到的几乎全部的答案。然而，在查看 C 参考手册 rand() 函数部分时，却发现官方示例代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;time.h&gt;</span></span><br> <br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>    srand(time(<span class="hljs-literal">NULL</span>)); <span class="hljs-comment">// use current time as seed for random generator</span><br>    <span class="hljs-keyword">int</span> random_variable = rand();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Random value on [0,%d]: %d\n&quot;</span>, RAND_MAX, random_variable);<br> <br>    <span class="hljs-comment">// roll a 6-sided die 20 times</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n=<span class="hljs-number">0</span>; n != <span class="hljs-number">20</span>; ++n) &#123;<br>        <span class="hljs-keyword">int</span> x = <span class="hljs-number">7</span>;<br>        <span class="hljs-keyword">while</span>(x &gt; <span class="hljs-number">6</span>) <br>            x = <span class="hljs-number">1</span> + rand()/((RAND_MAX + <span class="hljs-number">1u</span>)/<span class="hljs-number">6</span>); <span class="hljs-comment">// Note: 1+rand()%6 is biased</span><br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,  x); <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>官方示例代码为投掷一个 6 面骰子 20 次的结果，在生成 [1, 6] 的随机数部分的实现却截然不同，并且提示： 1+rand()%6 is biased，认为像上面那种简单的实现是有偏差的。</p>
+<h2 id="为什么-1-rand-6-是有偏差的"><a href="#为什么-1-rand-6-是有偏差的" class="headerlink" title="为什么 1 + rand() % 6 是有偏差的"></a>为什么 1 + rand() % 6 是有偏差的</h2><p>首先众所周知的是 rand() 函数并不能给出真正意义上的随机数，在 rand() 函数的实现中，每给定一个唯一确定的种子(srand(seed))时，rand() 函数就会得到一个唯一确定与之对应的整数序列。也因此官方参考中也说明了不要将此函数应用于严肃的场景，例如加密。但是这个问题并不是真正导致上述方法产生偏差的原因。即使 rand() 函数能给出真正的随机数， 1 + rand() % 6 也是不正确的。这里真正的问题在于 rand() % 6，也就是取模运算，+ 1并没有影响。</p>
+<p>来看一个极端的例子：假设 RAND_MAX = 10， 就是说 rand() 函数能够产生 [0, 10] 的随机数，现在我想要 [ 1, 3 ] 的随机数，使用 1 + rand() % 3 来产生我们想要的结果，那么对于 rand() 可能的结果 [0,1,2,3,4,5,6,7,8,9,10]，rand() % 3 得到的结果为 [ [0,1,2], [0,1,2], [0,1,2], [0, 1] ]，聪明的你现在已经看出问题了，没错，在 rand() % 3 的结果序列中 0, 1, 2 的数量并不相等，也就意味着 产生0, 1, 2 的概率并不相等，这与 rand() 的真随机与否无关。</p>
+<h2 id="如何正确实现"><a href="#如何正确实现" class="headerlink" title="如何正确实现"></a>如何正确实现</h2><p>因此，应当保证 rand() % n 的结果中 [0, n-1] 范围内各个整数的数量相等才是正确的实现。我们可以通过限制 rand() 结果的上限来实现，也就是将其限制在 RAND_MAX范围内 n 的最大倍数内。在官方实现中是这样的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">x = <span class="hljs-number">1</span> + rand()/((RAND_MAX + <span class="hljs-number">1u</span>)/<span class="hljs-number">6</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这里 RAND_MAX + 1u 将结果转为无符号型来避免 int 类型溢出。</p>
+<p>另一种实现如下(参考stackoverflow)：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> MAX =  <span class="hljs-number">6</span> * ((RAND_MAX + <span class="hljs-number">1u</span>)/<span class="hljs-number">6</span>);<br><span class="hljs-keyword">int</span> rand;<br><span class="hljs-keyword">while</span> (rand() &gt;= MAX) &#123;<br>	rand = rand();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>参考资料：[<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/49878942/why-is-rand6-biased]">https://stackoverflow.com/questions/49878942/why-is-rand6-biased]</a></p>
 
             </div>
             <hr>
@@ -282,9 +280,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/taro/">taro</a>
+                      <a class="hover-with-bg" href="/tags/C-C/">C/C++</a>
                     
-                      <a class="hover-with-bg" href="/tags/axios/">axios</a>
+                      <a class="hover-with-bg" href="/tags/%E7%AE%97%E6%B3%95/">算法</a>
                     
                   </div>
                 
@@ -301,18 +299,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/15/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用 nginx 解决 web应用中的跨域问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/03/java%E4%B8%8Emysql%E6%97%B6%E9%97%B4%E6%88%B3%E4%BA%A4%E4%BA%92/">
-                        <span class="hidden-mobile">java 与 mysql 时间戳数据交互</span>
+                      <a href="/2022/03/15/%E5%85%B3%E4%BA%8E%E8%B7%A8%E5%9F%9F/">
+                        <span class="hidden-mobile">使用 nginx 解决 web应用中的跨域问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
